@@ -6,7 +6,7 @@
 /*   By: armartir <armartir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/04 19:32:07 by armartir          #+#    #+#             */
-/*   Updated: 2023/03/09 14:49:35 by armartir         ###   ########.fr       */
+/*   Updated: 2023/03/09 15:45:32 by armartir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 
 # define W_WIDTH 600
 # define W_HEIGHT 600
-# define MAX_ITERATIONS 120
+# define MAX_ITERATIONS 500
 
 // KEYS
 # define KEY_UP 126
@@ -46,24 +46,26 @@ typedef struct s_complex
 
 typedef struct s_params
 {
-	void		*mlx;
-	void		*win;
-	void		*img_ptr;
-	char		*addr;
-	int			bpp;
-	int			line_len;
-	int			endian;
-	int			width;
-	int			height;
-	t_complex	min;
-	t_complex	max;
-	int			scale;
-	int			max_iter;
-	int			color;
-	int			cur_iter;
+	void					*mlx;
+	void					*win;
+	void					*img_ptr;
+	char					*addr;
+	int						bpp;
+	int						line_len;
+	int						endian;
+	int						width;
+	int						height;
+	t_complex				min;
+	t_complex				max;
+	int						scale;
+	int						max_iter;
+	int						color;
+	int						cur_iter;
 	unsigned char			r;
 	unsigned char			g;
 	unsigned char			b;
+	short					fractol_type;
+	char					*name;
 }	t_params;
 
 

@@ -6,12 +6,40 @@
 /*   By: armartir <armartir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/04 19:30:23 by armartir          #+#    #+#             */
-/*   Updated: 2023/03/09 14:49:44 by armartir         ###   ########.fr       */
+/*   Updated: 2023/03/09 16:00:32 by armartir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 #include <stdlib.h>
+
+void	instructions()
+{
+	write(1, "Use following commands.\n", 24);
+	write(1, "Mandelbrot\n", 11);
+	write(1, "Julian\n", 7);
+	write(1, "Smt\n", 4);
+	exit (0);
+}
+
+int	ft_strncmp(char *s1, char *s2, size_t n)
+{
+	size_t	i;
+
+	i = 0;
+	while (s1[i])
+	{
+		if (s1[i] >= 'A' && s1[i] <= 'Z')
+			s1[i] += 32;
+		i++;
+	}
+	i = 0;
+	if (n == 0)
+		return (0);
+	while (i < n - 1 && s1[i] != '\0' && s2[i] != '\0' && s1[i] == s2[i])
+		i++;
+	return ((unsigned char)s1[i] - (unsigned char)s2[i]);
+}
 
 int	create_trgb(int t, int r, int g, int b)
 {
@@ -41,7 +69,7 @@ int	mandelbrot(t_complex c, int max_iter)
 	return (i);
 }
 
-void	draw_fractol(t_params *params)
+void	draw_mandelbrot(t_params *params)
 {
 	int			x;
 	int			y;
@@ -72,7 +100,7 @@ void	draw_fractol(t_params *params)
 	mlx_put_image_to_window(params->mlx, params->win, params->img_ptr, 0, 0);
 }
 
-void	param_init(t_params	*params)
+void	param_init_m(t_params	*params)
 {
 	params->width = W_WIDTH;
 	params->height = W_HEIGHT;
@@ -84,6 +112,7 @@ void	param_init(t_params	*params)
 	params->r = 2;
 	params->g = 2;
 	params->b = 2;
+	params->fractol_type = 1;
 }
 
 int	zoom(int key,int x,int y,t_params *p)
@@ -104,7 +133,6 @@ int	zoom(int key,int x,int y,t_params *p)
 
     p->max.r = center.r + width / 2.0;
     p->max.i = center.i + height / 2.0;
-	draw_fractol(p);
 	}
 	if (key == MOUSE_UP)
 	{
@@ -117,8 +145,8 @@ int	zoom(int key,int x,int y,t_params *p)
 
     p->max.r = center.r + width / 2.0;
     p->max.i = center.i + height / 2.0;
-	draw_fractol(p);
 	}
+	draw_mandelbrot(p);
 	return (0);
 }
 
@@ -170,25 +198,51 @@ int	get_key(int key, t_params *p)
 	p->min.i -= 0.5;
 	p->max.i -= 0.5;
 	}
-	draw_fractol(p);
+	draw_mandelbrot(p);
 	return (0);
 }
 
-int main ()
+void	open_win(t_params *params, char *av)
+{
+	params->mlx = mlx_init();
+	params->win = mlx_new_window(params->mlx, params->height, params->width, av);
+	params->img_ptr = mlx_new_image(params->mlx, params->width, params->height);
+	params->addr = mlx_get_data_addr(params->img_ptr, &params->bpp, &params->line_len, &params->endian);
+}
+
+void	choose_fractol(t_params *p)
+{
+	if (p->fractol_type == 1)
+		draw_mandelbrot(p);
+}
+
+void	validation(char **av)
 {
 	t_params	params;
-
-	param_init(&params);
-	params.mlx = mlx_init();
-	params.win = mlx_new_window(params.mlx, params.height, params.width, "Mandelbrot");
-	params.img_ptr = mlx_new_image(params.mlx, params.width, params.height);
-	params.addr = mlx_get_data_addr(params.img_ptr, &params.bpp, &params.line_len, &params.endian);
-
-	draw_fractol(&params);
+	
+	if (!(ft_strncmp(av[1], "mandelbrot", 10)))
+	{
+		param_init_m(&params);
+	}
+	else
+		instructions();
+	open_win(&params, av[1]);
+	choose_fractol(&params);
 	mlx_mouse_hook(params.win, zoom,&params);
 	mlx_key_hook(params.win, get_key, &params);
-	
 	mlx_loop(params.mlx);
+}
+
+int main (int argc, char **argv)
+{
+
+	if (argc < 2)
+		instructions();
+	validation(argv);
+
+
+	// draw_mandelbrot(&params);
+
 	return (0);
 }
 
