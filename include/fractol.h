@@ -6,7 +6,7 @@
 /*   By: armartir <armartir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/04 19:32:07 by armartir          #+#    #+#             */
-/*   Updated: 2023/03/05 16:57:03 by armartir         ###   ########.fr       */
+/*   Updated: 2023/03/09 14:49:35 by armartir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,25 @@
 // TODO: Delete stdio library
 #include <stdio.h>
 
-# define W_WIDTH 1080
-# define W_HEIGHT 1080
-# define MAX_ITERATIONS 50
+# define W_WIDTH 600
+# define W_HEIGHT 600
+# define MAX_ITERATIONS 120
+
+// KEYS
+# define KEY_UP 126
+# define KEY_DOWN 125
+# define KEY_LEFT 123
+# define KEY_RIGHT 124
+# define KEY_PLUS 27
+# define KEY_MINUS 24
+# define KEY_ESC 53
+# define KEY_R 15
+# define KEY_G 5
+# define KEY_B 11
+
+// MOUSE
+# define MOUSE_UP 4
+# define MOUSE_DOWN 5
 typedef struct s_complex
 {
 	double	r;
@@ -45,6 +61,9 @@ typedef struct s_params
 	int			max_iter;
 	int			color;
 	int			cur_iter;
+	unsigned char			r;
+	unsigned char			g;
+	unsigned char			b;
 }	t_params;
 
 

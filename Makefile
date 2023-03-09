@@ -40,3 +40,5 @@ fclean: clean
 	@echo "$(RED)Removing out file...$(RESET)"
 	@$(RM) $(FILE_NAME)
 	@echo "$(GREEN)Done!$(RESET)"
+
+re: fclean all
