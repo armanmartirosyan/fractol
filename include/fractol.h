@@ -6,18 +6,19 @@
 /*   By: armartir <armartir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/04 19:32:07 by armartir          #+#    #+#             */
-/*   Updated: 2023/03/09 15:45:32 by armartir         ###   ########.fr       */
+/*   Updated: 2023/03/10 16:44:01 by armartir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FRACTOL_H
 # define FRACTOL_H
 
-#include <unistd.h>
-#include <mlx.h>
-#include <math.h>
+# include <unistd.h>
+# include <mlx.h>
+# include <math.h>
+# include "validation.h"
 // TODO: Delete stdio library
-#include <stdio.h>
+# include <stdio.h>
 
 # define W_WIDTH 600
 # define W_HEIGHT 600
@@ -28,8 +29,8 @@
 # define KEY_DOWN 125
 # define KEY_LEFT 123
 # define KEY_RIGHT 124
-# define KEY_PLUS 27
-# define KEY_MINUS 24
+# define KEY_PLUS 24
+# define KEY_MINUS 27
 # define KEY_ESC 53
 # define KEY_R 15
 # define KEY_G 5
@@ -38,6 +39,7 @@
 // MOUSE
 # define MOUSE_UP 4
 # define MOUSE_DOWN 5
+
 typedef struct s_complex
 {
 	double	r;
@@ -53,12 +55,9 @@ typedef struct s_params
 	int						bpp;
 	int						line_len;
 	int						endian;
-	int						width;
-	int						height;
 	t_complex				min;
 	t_complex				max;
 	int						scale;
-	int						max_iter;
 	int						color;
 	int						cur_iter;
 	unsigned char			r;
@@ -66,7 +65,7 @@ typedef struct s_params
 	unsigned char			b;
 	short					fractol_type;
 	char					*name;
+	t_complex				julia;
 }	t_params;
-
 
 #endif
