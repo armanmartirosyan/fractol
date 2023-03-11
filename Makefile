@@ -4,8 +4,11 @@ FLAGS = -Wall -Wextra -Werror
 FILE_NAME = fractol
 MLX = -L /usr/local/lib/ -lmlx -framework OpenGL -framework AppKit
 
-SRCS = $(shell find  *.c)
-OBJS_MAN = $(patsubst %.c,%.o,$(SRCS))
+SRC_DIR = src
+OBJ_DIR = obj
+
+SRCS = $(shell find . -name "*.c")
+OBJS = $(subst $(SRC_DIR),$(OBJ_DIR), $(SRCS:.c=.o))
 
 INCLUDE = -I ./include/
 
@@ -20,12 +23,18 @@ YELLOW = \033[33m
 
 all: $(FILE_NAME)
 
+bonus: all
 
-%.o: %.c | $(OBJDIR)
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c 
+	@mkdir -p $(OBJ_DIR)
 	@echo "$(YELLOW)Compiling $<...$(RESET)"
 	@$(CC) $(FLAGS) $(INCLUDE) -c $< -o $@
 
-$(FILE_NAME): $(OBJS_MAN)
+# %.o: %.c | $(OBJDIR)
+# 	@echo "$(YELLOW)Compiling $<...$(RESET)"
+# 	@$(CC) $(FLAGS) $(INCLUDE) -c $< -o $@
+
+$(FILE_NAME): $(OBJS)
 	@echo "$(YELLOW)Linking $(FILE_NAME)...$(RESET)"
 	@$(CC) $(FLAGS) $(INCLUDE) $^ $(MLX) -o $(FILE_NAME)
 	@echo "$(GREEN)Done!$(RESET)"
@@ -33,7 +42,7 @@ $(FILE_NAME): $(OBJS_MAN)
 
 clean:
 	@echo "$(RED)Cleaning...$(RESET)"
-	@$(RM) $(OBJS_MAN) $(OBJS_BONUS)
+	@$(RM) $(OBJS)
 	@echo "$(GREEN)Done!$(RESET)"
 
 fclean: clean
