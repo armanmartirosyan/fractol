@@ -21,23 +21,23 @@
 
 # define W_WIDTH 600
 # define W_HEIGHT 600
-# define MAX_ITERATIONS 600
+# define MAX_ITERATIONS 200
 
 // KEYS
-# define KEY_UP 126
-# define KEY_DOWN 125
-# define KEY_LEFT 123
-# define KEY_RIGHT 124
-# define KEY_PLUS 24
-# define KEY_MINUS 27
-# define KEY_ESC 53
-# define KEY_R 15
-# define KEY_G 5
-# define KEY_B 11
-# define KEY_Z 6
-# define KEY_X 7
-# define KEY_C 8
-# define KEY_V 9
+# define KEY_UP 65362
+# define KEY_DOWN 65364
+# define KEY_LEFT 65361
+# define KEY_RIGHT 65363
+# define KEY_PLUS 61
+# define KEY_MINUS 45
+# define KEY_ESC 65307
+# define KEY_R 114
+# define KEY_G 103
+# define KEY_B 98
+# define KEY_Z 122
+# define KEY_X 120
+# define KEY_C 99
+# define KEY_V 118
 
 // MOUSE
 # define MOUSE_UP 4

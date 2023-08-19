@@ -1,0 +1,7 @@
+.DS_Store
+.vs_code/
+.vscode
+*.o
+*.a
+fractol
+obj

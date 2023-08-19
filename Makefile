@@ -1,8 +1,8 @@
 CC = gcc
-FLAGS = -Wall -Wextra -Werror
+FLAGS =  -Wall -Wextra -Werror
 
 FILE_NAME = fractol
-MLX = -L /usr/local/lib/ -lmlx -framework OpenGL -framework AppKit
+MLX = -L /usr/local/lib/ -lmlx -lX11 -lXext -lm
 
 SRC_DIR = src
 OBJ_DIR = obj
@@ -29,10 +29,6 @@ $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 	@mkdir -p $(OBJ_DIR)
 	@echo "$(YELLOW)Compiling $<...$(RESET)"
 	@$(CC) $(FLAGS) $(INCLUDE) -c $< -o $@
-
-# %.o: %.c | $(OBJDIR)
-# 	@echo "$(YELLOW)Compiling $<...$(RESET)"
-# 	@$(CC) $(FLAGS) $(INCLUDE) -c $< -o $@
 
 $(FILE_NAME): $(OBJS)
 	@echo "$(YELLOW)Linking $(FILE_NAME)...$(RESET)"

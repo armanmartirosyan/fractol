@@ -11,11 +11,13 @@
 /* ************************************************************************** */
 
 #include "fractol.h"
+#include <stdio.h>
 
 int	get_key(int key, t_params *p)
 {
 	t_complex	center;
 
+	printf("key = %d\n" , key);
 	center.r = (p->min.r) + (p->max.r - p->min.r)
 		* (W_WIDTH / 2) / (W_WIDTH - 1.0);
 	center.i = (p->min.i) + (p->max.i - p->min.i)
@@ -43,6 +45,7 @@ int	zoom(int key, int x, int y, t_params *p)
 {
 	t_complex	center;
 
+	printf("key = %d\n" , key);
 	center.r = (p->min.r) + (p->max.r - p->min.r) * x / (W_WIDTH - 1.0);
 	center.i = (p->min.i) + (p->max.i - p->min.i) * y / (W_HEIGHT - 1.0);
 	if (key == MOUSE_DOWN)

@@ -50,8 +50,8 @@ void	draw_julia(t_params *p)
 				p->color = create_trgb(1, p->r, p->g, p->b);
 			else
 				p->color = create_trgb(1, p->r, p->g, p->b) * p->cur_iter;
-				addr = p->addr + (y * p->line_len + x * (p->bpp / 8));
-				*(unsigned int *)addr = p->color;
+			addr = p->addr + (y * p->line_len + x * (p->bpp / 8));
+			*(unsigned int *)addr = p->color;
 		}
 	}
 	mlx_put_image_to_window(p->mlx, p->win, p->img_ptr, 0, 0);
