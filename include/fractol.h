@@ -19,9 +19,9 @@
 # include "validation.h"
 # include <stdlib.h>
 
-# define W_WIDTH 600
-# define W_HEIGHT 600
-# define MAX_ITERATIONS 200
+# define W_WIDTH 1000
+# define W_HEIGHT 1000
+# define MAX_ITERATIONS 1000
 
 // KEYS
 # define KEY_UP 65362
