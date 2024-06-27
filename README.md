@@ -22,9 +22,9 @@ The program is built using the MiniLibX library, which provides a basic set of g
 
 ### Preview
 
-![Mandelbrot](./images/Mandelbrot.PNG){ width=600px height=600px }
-![Julia](./images/Julia.PNG){ width=600px height=600px }
-![Burning-Ship](./images/Burning-Ship.PNG){ width=600px height=600px }
+![Mandelbrot](./images/Mandelbrot.PNG)
+![Julia](./images/Julia.PNG)
+![Burning-Ship](./images/Burning-Ship.PNG)
 
 ## Features
 
