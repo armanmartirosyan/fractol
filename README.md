@@ -5,14 +5,13 @@ This repository contains a fractal visualization project implemented using the M
 ## Table of Contents
 
 - [Introduction](#introduction)
+  - [Preview](#preview)
 - [Features](#features)
 - [Getting Started](#getting-started)
   - [Prerequisites](#prerequisites)
   - [Installation](#installation)
-- [Usage](#usage)
 - [Controls](#controls)
 - [Fractal Types](#fractal-types)
-- [Contributing](#contributing)
 - [License](#license)
 
 ## Introduction
@@ -20,6 +19,12 @@ This repository contains a fractal visualization project implemented using the M
 Fractals are intricate geometric shapes that exhibit self-similarity and repeating patterns at different scales. This project aims to provide an interactive platform for visualizing various fractals, allowing users to zoom in, zoom out, and navigate around the fractal to observe its complex details.
 
 The program is built using the MiniLibX library, which provides a basic set of graphical functions to interact with the X Window System. This makes it possible to create graphical interfaces, handle user input, and display images directly on the screen.
+
+### Preview
+
+![Mandelbrot](./images/Mandelbrot.PNG){ width=600px height=600px }
+![Julia](./images/Julia.PNG){ width=600px height=600px }
+![Burning-Ship](./images/Burning-Ship.PNG){ width=600px height=600px }
 
 ## Features
 
@@ -32,6 +37,7 @@ The program is built using the MiniLibX library, which provides a basic set of g
 ## Getting Started
 
 ### Prerequisites
+
 To build and run this project, you will need:
 
 - A UNIX-like operating system.
@@ -40,6 +46,7 @@ To build and run this project, you will need:
 - X11 development libraries.
 
 ### Installation
+
 1. Clone the repository: `git clone https://github.com/armanmartirosyan/fractol`
 2. Build the project using the provided Makefile: `make`
 3. Run the game executable: `./fractol` and fractol name (Mandelbrot, Julia, Burnunship)
@@ -62,5 +69,12 @@ To build and run this project, you will need:
   - Scroll Down: Zoom out away from the mouse pointer.
 - **Exit Program**: Press the `ESC` key or close the window.
 
+### Fractal Types
+
+- **The Mandelbrot** set is a two-dimensional set with a relatively simple definition that exhibits great complexity, especially as it is magnified
+- **The Julia** set and **The Fatou** set are two complementary sets (Julia "laces" and Fatou "dusts") defined from a function. Informally, the Fatou set of the function consists of values with the property that all nearby values behave similarly under repeated iteration of the function, and the Julia set consists of values such that an arbitrarily small perturbation can cause drastic changes in the sequence of iterated function values.
+- **The Burning Ship** fractal, first described and created by Michael Michelitsch and Otto E. Rössler in 1992. The difference between this calculation and that for the Mandelbrot set is that the real and imaginary components are set to their respective absolute values before squaring at each iteration.
+
 ## License
+
 This project is licensed under the [MIT License](LICENSE).
